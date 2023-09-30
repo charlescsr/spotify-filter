@@ -43,7 +43,15 @@ def main():
     # Get Playlist Tracks from Spotify API
     playlist_tracks = sp.playlist_tracks(playlist_id)
 
-    # 
+    # Detect the language of each track in the playlist
+    languages = []
+    for track in playlist_tracks['items']:
+        languages.append(detect(track['track']['name']))
+
+    # Display the language of each track in the playlist for the user
+    st.write("The languages of the tracks in this playlist are:")
+    for language in languages:
+        st.write(language)
 
     
     
