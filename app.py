@@ -65,8 +65,12 @@ def main():
         for language in unique_languages:
             language_names.append(lang_map[language])
 
-        st.write("The playlist contains tracks in the following languages:")
-        st.write(language_names)
+        # Filter the tracks in the playlist by language and display the results. Filter it by alphabetical order of the language name
+        for language in sorted(language_names):
+            st.write(language)
+            for track in playlist_tracks['items']:
+                if detect(track['track']['name']) == language:
+                    st.write(track['track']['name'])
 
     
     
